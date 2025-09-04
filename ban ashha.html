@@ -1,0 +1,343 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>بن عياش للأجهزة الإلكترونية</title>
+  <meta name="description" content="متجر بن عياش للأجهزة الإلكترونية - مكيفات، غسالات، عروض وخدمة ما بعد البيع.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f172a;
+      --card:#0b1225;
+      --accent:#00d4ff;
+      --accent-2:#22d3ee;
+      --text:#e8f0ff;
+      --muted:#94a3b8;
+      --ok:#10b981;
+      --warn:#f59e0b;
+      --danger:#ef4444;
+      --chip:#111827;
+      --ring: rgba(34,211,238,.35);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:"Cairo",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+      background:
+        radial-gradient(1200px 600px at 90% -10%, #07314d 0%, transparent 60%),
+        radial-gradient(900px 500px at -10% 10%, #112a46 0%, transparent 55%),
+        radial-gradient(1000px 700px at 50% 120%, #082036 0%, transparent 60%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{width:min(1200px, 92%);margin-inline:auto}
+    header{
+      position:sticky; top:0; z-index:1000;
+      backdrop-filter:saturate(160%) blur(8px);
+      background:linear-gradient(180deg, rgba(4,10,20,.9), rgba(4,10,20,.6));
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:10px 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap:14px;
+    }
+    .logo{
+      width:44px; height:44px; display:grid; place-items:center;
+      background:linear-gradient(135deg, var(--accent), var(--accent-2));
+      border-radius:12px; box-shadow:var(--shadow);
+    }
+    .brand h1{
+      margin:0; font-size:1.25rem; letter-spacing:.2px;
+      font-weight:800;
+    }
+    .brand small{display:block; color:var(--muted); font-weight:600; margin-top:-2px}
+    .nav a.btn{
+      padding:.65rem 1rem; border-radius:12px; background:#0b1430;
+      border:1px solid rgba(255,255,255,.08);
+      transition:.2s transform ease, .2s background ease;
+      font-weight:700;
+    }
+    .nav a.btn:hover{transform:translateY(-2px); background:#0f1a3a}
+    .hero{
+      position:relative; padding:56px 0 32px;
+    }
+    .hero-card{
+      display:grid; grid-template-columns:1.35fr 1fr; gap:28px;
+      background:linear-gradient(180deg, rgba(8,21,40,.9), rgba(5,14,28,.9));
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:22px; padding:28px; box-shadow:var(--shadow);
+    }
+    .hero h2{font-size:2.1rem; margin:0 0 10px; letter-spacing:.3px}
+    .hero p{margin:0; color:var(--muted)}
+    .hero .tags{margin-top:16px; display:flex; flex-wrap:wrap; gap:10px}
+    .chip{
+      background:var(--chip); color:#cbd5e1; border:1px solid rgba(255,255,255,.06);
+      padding:.4rem .7rem; border-radius:999px; font-weight:700; font-size:.9rem;
+    }
+    .cta{
+      display:flex; gap:12px; margin-top:20px; flex-wrap:wrap;
+    }
+    .btn-primary{
+      background:linear-gradient(135deg, var(--accent), var(--accent-2));
+      color:#031018; border:none; padding:.9rem 1.1rem;
+      border-radius:14px; font-weight:800; box-shadow:0 10px 30px var(--ring);
+    }
+    .btn-ghost{
+      background:transparent; color:var(--text);
+      border:1px solid rgba(255,255,255,.12);
+      padding:.9rem 1.1rem; border-radius:14px; font-weight:800;
+    }
+    .stat{
+      display:flex; gap:12px; align-items:center; margin-top:16px; color:#cbd5e1;
+    }
+    .hero-visual{
+      background: radial-gradient(400px 200px at 60% 0%, rgba(0,212,255,.25), transparent 60%);
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:18px; display:grid; place-items:center; padding:22px;
+    }
+    .hero-svg{width:100%; max-width:420px; height:auto}
+    .section{padding:20px 0 40px}
+    .section h3{font-size:1.6rem; margin:14px 0 14px}
+    .filters{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+      background:rgba(4,10,20,.6); border:1px solid rgba(255,255,255,.06);
+      padding:10px; border-radius:16px;
+    }
+    .filters .title{color:#cbd5e1; margin-inline-end:6px}
+    .tabs{display:flex; gap:8px; flex-wrap:wrap}
+    .tab{
+      padding:.5rem .85rem; border-radius:999px; border:1px solid rgba(255,255,255,.1);
+      background:#0b1225; cursor:pointer; font-weight:700;
+    }
+    .tab.active{background:linear-gradient(135deg, var(--accent), var(--accent-2)); color:#04111e}
+    .search{flex:1; min-width:200px}
+    .search input{
+      width:100%; padding:.7rem .9rem; border-radius:12px; background:#0b1225;
+      border:1px solid rgba(255,255,255,.1); color:var(--text); outline:none;
+    }
+    .grid{
+      margin-top:16px;
+      display:grid; grid-template-columns:repeat(12,1fr); gap:18px;
+    }
+    .card{
+      grid-column:span 12;
+      background:linear-gradient(180deg, rgba(8,21,40,.75), rgba(5,14,28,.9));
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:18px; padding:14px; box-shadow:var(--shadow);
+      display:flex; gap:14px; align-items:center;
+      transition:transform .15s ease, box-shadow .15s ease;
+    }
+    .card:hover{transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,.45)}
+    .thumb{
+      width:92px; height:92px; border-radius:14px; display:grid; place-items:center;
+      background:radial-gradient(160px 160px at 100% 0%, rgba(34,211,238,.16), transparent 65%), #0b1225;
+      border:1px solid rgba(255,255,255,.08);
+      flex-shrink:0;
+    }
+    .info{flex:1}
+    .info h4{margin:2px 0 4px; font-size:1.1rem}
+    .meta{display:flex; gap:10px; flex-wrap:wrap; color:#cbd5e1}
+    .price{font-weight:800; font-size:1.05rem}
+    .badge{
+      font-size:.85rem; padding:.25rem .55rem; border-radius:999px;
+      border:1px solid rgba(255,255,255,.1); background:#0b1225; color:#cbd5e1; font-weight:700;
+    }
+    .buy{
+      display:flex; flex-direction:column; align-items:end; gap:8px;
+      min-width:160px;
+    }
+    .buy .btn{display:inline-flex; align-items:center; gap:8px}
+    .small{font-size:.85rem; color:#9fb2cc}
+    .brand-badges{display:flex; flex-wrap:wrap; gap:8px; margin-top:8px}
+    .brand-badges .b{padding:.3rem .6rem; border-radius:10px; background:#0b1225; border:1px solid rgba(255,255,255,.06); font-weight:700; font-size:.85rem}
+    .stars{display:inline-flex; gap:2px; transform:translateY(2px)}
+    .stars svg{width:16px; height:16px}
+    .divider{height:1px; background:linear-gradient(90deg,transparent, rgba(255,255,255,.08),transparent); margin:20px 0}
+    .brands{display:flex; gap:10px; flex-wrap:wrap}
+    .brand-pill{padding:.55rem .85rem; border-radius:999px; border:1px solid rgba(255,255,255,.1); background:#0b1225; font-weight:800; cursor:pointer}
+    .brand-pill.active{background:linear-gradient(135deg, var(--accent), var(--accent-2)); color:#04111e}
+    .about{
+      display:grid; grid-template-columns:1fr 1fr; gap:22px;
+      background:linear-gradient(180deg, rgba(8,21,40。.75), rgba(5,14,28。.9));
+      border:1px solid rgba(255,255,255。.06); border-radius:18px; padding:22px;
+    }
+    .contact-box{
+      display:grid; gap:8px; background:#0b1225; border:1px solid rgba(255,255,255。.06);
+      border-radius:16px; padding:14px;
+    }
+    .contact-box a{font-weight:800}
+    footer{
+      padding:24px 0 36px; color:#9fb2cc; text-align:center
+    }
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero-card{grid-template-columns:1fr}
+      .buy{min-width:0; align-items:start}
+    }
+    @media (min-width: 520px){ .card{grid-column:span 6} }
+    @media (min-width: 900px){ .card{grid-column:span 4} }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <!-- Simple SVG mark (plug + spark) -->
+          <svg viewBox="0 0 64 64" width="32" height="32" aria-hidden="true">
+            <defs>
+              <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#081a2f"/>
+                <stop offset="1" stop-color="#0a2547"/>
+              </linearGradient>
+            </defs>
+            <rect x="8" y="8" width="48" height="48" rx="12" fill="url(#g1)" opacity=".25"></rect>
+            <path d="M26 36v-8h12v8a8 8 0 0 1-8 8h0a8 8 0 0 1-8-8Z" fill="#00121b" opacity=".3"/>
+            <path d="M24 28h16v6a8 8 0 0 1-8 8h0a8 8 0 0 1-8-8v-6Z" fill="#031b27"/>
+            <path d="M28 20v8m8-8v8" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="45" cy="19" r="3" fill="white"/>
+          </svg>
+        </div>
+        <div>
+          <h1>بن عياش <small>للأجهزة الإلكترونية</small></h1>
+        </div>
+      </div>
+      <nav>
+        <a class="btn" href="#products">المنتجات</a>
+        <a class="btn" href="#brands">العلامات</a>
+        <a class="btn" href="#contact">تواصل</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-card">
+        <div>
+          <h2>أقوى العروض على <span style="background:linear-gradient(135deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent">مكيفات</span> و<span style="background:linear-gradient(135deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent">غسالات</span> جري & جنرال</h2>
+          <p>تشغيل هادئ، استهلاك منخفض للطاقة، وضمان معتمد. اشترِ الآن وخدمة التوصيل والتركيب متاحة داخل المدينة.</p>
+          <div class="tags">
+            <span class="chip">توصيل & تركيب</span>
+            <span class="chip">ضمان معتمد</span>
+            <span class="chip">تقسيط مرن</span>
+            <span class="chip">خدمة ما بعد البيع</span>
+          </div>
+          <div class="cta">
+            <a href="#products" class="btn-primary">تصفح المنتجات</a>
+            <a href="https://wa.me/9665XXXXXXXX?text=مرحباً%20أريد%20الاستفسار%20عن%20عروض%20بن%20عياش" class="btn-ghost" target="_blank" rel="noopener">تواصل واتساب</a>
+          </div>
+          <div class="stat">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 17l-5 2 1.5-5.5L4 9l5.5-.5L12 3l2.5 5.5L20 9l-4.5 4.5L17 19l-5-2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+            </svg>
+            <span>رضا أكثر من <strong>2,000+</strong> عميل</span>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <!-- Decorative hero SVG (AC + Washer) -->
+          <svg class="hero-svg" viewBox="0 0 980 520" role="img" aria-label="أجهزة كهربائية">
+            <defs>
+              <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#00d4ff"/>
+                <stop offset="1" stop-color="#22d3ee"/>
+              </linearGradient>
+              <filter id="blur" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="14" />
+              </filter>
+            </defs>
+            <rect x="40" y="60" width="420" height="160" rx="18" fill="#0a1a33" stroke="url(#lg)" opacity=".9"></rect>
+            <rect x="60" y="90" width="380" height="20" rx="10" fill="url(#lg)" opacity=".85"></rect>
+            <circle cx="340" cy="160" r="22" fill="#061226"></circle>
+            <rect x="520" y="60" width="340" height="400" rx="26" fill="#0a1a33" stroke="url(#lg)" opacity=".9"></rect>
+            <circle cx="690" cy="270" r="120" fill="#061226" stroke="url(#lg)" stroke-width="8"></circle>
+            <circle cx="690" cy="270" r="82" fill="#0a1a33"></circle>
+            <circle cx="690" cy="270" r="6" fill="url(#lg)"></circle>
+            <ellipse cx="880" cy="130" rx="40" ry="35" fill="url(#lg)" opacity=".35" filter="url(#blur)"></ellipse>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section id="products" class="section container">
+      <h3>منتجات مختارة</h3>
+
+      <div class="filters">
+        <span class="title">الفئة:</span>
+        <div class="tabs" id="categoryTabs">
+          <button class="tab active" data-cat="الكل">الكل</button>
+          <button class="tab" data-cat="مكيفات">مكيفات</button>
+          <button class="tab" data-cat="غسالات">غسالات</button>
+        </div>
+        <span class="title" style="margin-inline-start:10px">العلامة:</span>
+        <div class="brands" id="brandPills">
+          <button class="brand-pill active" data-brand="الكل">الكل</button>
+          <button class="brand-pill" data-brand="جري">جري (Gree)</button>
+          <button class="brand-pill" data-brand="جنرال">جنرال (General)</button>
+        </div>
+        <div class="search">
+          <input id="searchInput" type="search" placeholder="ابحث باسم المنتج أو الميزة…">
+        </div>
+      </div>
+
+      <div class="grid" id="grid"></div>
+    </section>
+
+    <section id="brands" class="section container">
+      <h3>لماذا جري & جنرال؟</h3>
+      <div class="about">
+        <div>
+          <p>نعتمد في بن عياش على أفضل العلامات في عالم التبريد والغسيل المنزلي. <strong>جري (Gree)</strong> تشتهر بالاعتمادية وكفاءة الطاقة، بينما <strong>جنرال (General)</strong> تقدم أداءً ثابتًا وخدمة ممتدة.</p>
+          <div class="brand-badges">
+            <span class="b">كفاءة طاقة عالية</span>
+            <span class="b">تشغيل هادئ</span>
+            <span class="b">ضمان قطع أصلية</span>
+            <span class="b">خدمة ما بعد البيع</span>
+          </div>
+          <div class="divider"></div>
+          <p class="small">الأسعار والمواصفات قابلة للتغيير. تواصل معنا لتأكيد التوفر والعروض الحالية.</p>
+        </div>
+        <div class="contact-box" id="contact">
+          <h4 style="margin:0 0 8px">تواصل معنا</h4>
+          <div>هاتف: <a href="tel:+9665XXXXXXXX">+966 5 XXXXXXXX</a></div>
+          <div>واتساب: <a href="https://wa.me/9665XXXXXXXX" target="_blank" rel="noopener">اضغط هنا للدردشة</a></div>
+          <div>الموقع: <span>اكتب عنوان متجرك هنا</span></div>
+          <div>أوقات العمل: <span>من 10 ص حتى 10 م (يوميًا)</span></div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="container">
+      جميع الحقوق محفوظة ©️ <span id="year"></span> بن عياش للأجهزة الإلكترونية
+    </footer>
+  </main>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/9665XXXXXXXX" target="_blank" rel="noopener"
+     style="position:fixed; left:20px; bottom:20px; width:58px; height:58px; border-radius:50%;
+            display:grid; place-items:center; background:linear-gradient(135deg,#25D366,#128C7E);
+            color:#04111e; box-shadow:0 10px 30px rgba(0,0,0,.4); border:1px solid rgba(255,255,255,.2)"
+     aria-label="واتساب">
+    <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
+      <path fill="white" d="M20.52 3.48A11.78 11.78 0 0 0 12 0 11.94 11.94 0 0 0 .06 12.09a12.1 12.1 0 0 0 1.76 6.3L0 24l5.79-1.52a12.07 12.07 0 0 0 6.2 1.72h.05A11.93 11.93 0 0 0 24 12 11.8 11.8 0 0 0 20.52 3.48z"/>
+      <path fill="white" d="M17.47 14.49c-.3-.15-1.79-.88-2.07-.98s-.48-.15-.68.15-.78.98-.96 1.19-.35.23-.65.08a8.12 8.12 0 0 1-2.4-1.48 9.03 9.03 0 0 1-1.66-2.06c-.17-.3 0-.46.13-.61.14-.15.3-.38.45-.57.15-.19.2-.31.3-.53.1-.23.05-.42-.03-.57-.08-.15-.68-1.62-.93-2.21-.24-.58-.49-.5-.68-.51h-.58a1.1 1.1 0 0 0-.8.38c-.27.3-1.03 1-1.03 2.46s1.06 2.85 1.21 3.05 2.09 3.19 5.06 4.48a17.33 17.33 0 0 0 1.7.63c.71.22 1.36 .19 1.87 .12.57-.08 1.79-.73 2.04-1.43.25-.7.25-1.29.18-1.43-.07-.14-.27-.22-.57-.37z"/>
+    </svg>
+  </a>
+
+  <script>
+    const products = [
+      // ACs - Gree
+      {id:'ac-gree-18', name:'مكيف جداري 18 ألف وحدة', brand:'جري', category:'مكيفات', price:2199, rating:4.8, badge:'الأكثر مبيعًا', specs:['تيربو كول','فريون صديق للبيئة','فلتر بلازما'], icon:'ac'},
+      {id:'ac-gree-24', name:'مكيف سبليت 24 ألف وحدة انفرتر', brand:'جري', category:'مكيفات', price:3199, rating:4.7, badge:'انفرتر', specs:['توفير طاقة حتى 30%','تشغيل هادئ','مؤقت ذكي'], icon:'ac'},
+      
